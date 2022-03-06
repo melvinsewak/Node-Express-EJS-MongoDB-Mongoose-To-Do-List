@@ -13,7 +13,9 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect(`mongodb+srv://app-admin:Casual702903@cluster0.nekft.mongodb.net/todolistDB`);
+console.log(`Connection to database using: ${process.env.DB_CONNECTION_STRING}`);
+
+mongoose.connect(process.env.DB_CONNECTION_STRING);
 
 const itemSchema = new mongoose.Schema({
   name:{
